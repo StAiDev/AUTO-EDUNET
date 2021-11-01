@@ -12,4 +12,4 @@ except:
     driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe')
 
 driver.get("https://cls1.edunet.net/")
-driver.implicitly_wait(3)
+driver.implicitly_wait(3)   
