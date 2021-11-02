@@ -10,3 +10,4 @@ text = "Test String"
 driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe')
 
 driver.get("http://shinyang.shop/steve/test.html")
+driver.find_element(by = By.XPATH, value='/html/body/form/input[1]').send_keys(text)
