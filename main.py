@@ -13,6 +13,7 @@ try:
 except:
     chromedriver_autoinstaller.install(True)
     driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe')
+    
 
 driver.get("https://cls1.edunet.net/")
 driver.find_element_by_xpath('//*[@id="login_id_main"]').send_keys(username)
