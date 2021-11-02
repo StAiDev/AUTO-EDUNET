@@ -15,8 +15,8 @@ except:
     driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe')
 
 driver.get("https://cls1.edunet.net/")
-driver.find_element_by_id("login_id_main").send_keys(username)
-driver.find_element_by_id("password_main").send_keys(password)
+driver.find_element_by_xpath('//*[@id="login_id_main"]').send_keys(username)
+driver.find_element_by_xpath('//*[@id="password_main"]').send_keys(password)
 driver.find_element_by_xpath('//*[@id="loginForm_main"]/div/div[1]/div[2]/button').click()
 time.sleep(2)
 driver.find_element_by_xpath('//*[@id="mCSB_2_container"]/ul/li/a').click()
