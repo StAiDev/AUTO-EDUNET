@@ -16,9 +16,8 @@ except:
     
 
 driver.get("https://cls1.edunet.net/")
-driver.find_element_by_xpath('//*[@id="login_id_main"]').send_keys(username)
-driver.find_element_by_xpath('//*[@id="password_main"]').send_keys(password)
-driver.find_element_by_xpath('//*[@id="loginForm_main"]/div/div[1]/div[2]/button').click()
 time.sleep(2)
-driver.find_element_by_xpath('//*[@id="mCSB_2_container"]/ul/li/a').click()
-time.sleep(1000)
+driver.find_element_by_xpath('//*[@id="login_id_main"]').send_keys(str(username))
+driver.find_element_by_xpath('//*[@id="password_main"]').send_keys(str(password))
+driver.find_element_by_xpath('//*[@id="loginForm_main"]/div/div[1]/div[2]/button').click()
+time.sleep(10)
