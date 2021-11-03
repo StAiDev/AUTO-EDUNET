@@ -9,7 +9,7 @@ from tkinter import *
 
 root = Tk()
 root.title("Auto Edunet")
-root.geometry("640x480")
+root.geometry("480x640")
 root.resizable(False, False)
 
 
