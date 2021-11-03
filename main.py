@@ -44,7 +44,7 @@ except:
     print("id 또는 pw가 맞지 않습니다")
     driver.quit()
 time.sleep(1)
-driver.find_element_by_xpath('//*[@id="content-main"]/div[2]/div[2]/div/div[1]/div[4]/a').click()
+driver.find_element_by_xpath('//*[@id="content-main"]/div[2]/div[2]/div/div[2]/div[4]/a').click()
 time.sleep(1)
 driver.execute_script("window.scrollTo(0, 700)")
 time.sleep(0.7)
@@ -60,8 +60,13 @@ while True:
         while True:
             if check('/html/body/div[4]/div[2]/div/div/div/div/div/div/div'):
                 driver.find_element_by_xpath('/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]/button[1]').click()
-                time.sleep(0.6)
-                driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[3]/div[3]/div[3]/div[2]/button').click()
+                time.sleep(1)
+                try:
+                    driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[3]/div[3]/div[3]/div[2]/button').click()
+                    time.sleep(0.5)
+                    driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[2]/div[4]/div').click()
+                except:
+                    pass
     else:
         driver.close()
         driver.switch_to.window(driver.window_handles[0])
