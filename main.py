@@ -30,6 +30,7 @@ def check(xpath):
 
 driver.maximize_window()
 driver.get("https://cls1.edunet.net/")
+time.sleep(1)
 driver.find_element(by=By.ID, value="login_id_main").send_keys(username)
 driver.find_element(by=By.ID, value="password_main").send_keys(password)
 driver.find_element(by=By.ID, value="password_main").send_keys(Keys.ENTER)
