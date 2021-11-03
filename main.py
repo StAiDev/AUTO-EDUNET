@@ -55,11 +55,11 @@ while True:
     time.sleep(0.3)
     if driver.current_url.startswith("https://cls1.edunet.net/cyber/content/play.do"):
         while True:
-            if check('/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]') == True:
+            if check('/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]') is True:
                 driver.find_element_by_xpath('/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]/button[1]').send_keys(Keys.ENTER)
                 time.sleep(0.6)
                 driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[2]/div[4]/div').click()
-            elif check('//*[@id="mep_0"]/div/div[2]/div[4]/div') == True:
+            elif check('//*[@id="mep_0"]/div/div[2]/div[4]/div') is True:
                 driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[2]/div[4]/div').click()
                 time.sleep(0.5)
     else:
