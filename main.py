@@ -12,13 +12,15 @@ username = f.readline()
 password = f.readline()
 
 chrome_ver = chromedriver_autoinstaller.get_chrome_version().split('.')[0]
+options = webdriver.ChromeOptions()
+options.add_experimental_option("excludeSwitches", ["enable-logging"])
 
 
 try:
-    driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe')   
+    driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe', options=options)   
 except:
     chromedriver_autoinstaller.install(True)
-    driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe')
+    driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe', options=options)
 
 
 def check(xpath):
@@ -55,12 +57,12 @@ while True:
     time.sleep(0.3)
     if driver.current_url.startswith("https://cls1.edunet.net/cyber/content/play.do"):
         while True:
-            if check('/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]') is True:
-                driver.find_element_by_xpath('/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]/button[1]').send_keys(Keys.ENTER)
+            if check('/html/body/div[4]/div[2]/div/div/div/div/div/div/div') is True:
+                driver.find_element_by_tag_name('body').send_keys(Keys.ENTER)
                 time.sleep(0.6)
-                driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[2]/div[4]/div').click()
-            elif check('//*[@id="mep_0"]/div/div[2]/div[4]/div') is True:
-                driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[2]/div[4]/div').click()
+                driver.find_element_by_tag_name('body').send_keys(Keys.ENTER)
+            if check('//*[@id="mep_0"]/div/div[2]/div[4]/div') is True:
+                driver.find_element_by_tag_name('body').send_keys(Keys.ENTER)
                 time.sleep(0.5)
     else:
         driver.close()
