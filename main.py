@@ -56,14 +56,12 @@ while True:
     driver.switch_to.window(driver.window_handles[1])
     time.sleep(0.3)
     if driver.current_url.startswith("https://cls1.edunet.net/cyber/content/play.do"):
+        driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[3]/div[3]/div[3]/div[2]/button').click()
         while True:
-            if check('/html/body/div[4]/div[2]/div/div/div/div/div/div/div') is True:
-                driver.find_element_by_tag_name('body').send_keys(Keys.ENTER)
+            if check('/html/body/div[4]/div[2]/div/div/div/div/div/div/div'):
+                driver.find_element_by_xpath('/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]/button[1]').click()
                 time.sleep(0.6)
-                driver.find_element_by_tag_name('body').send_keys(Keys.ENTER)
-            if check('//*[@id="mep_0"]/div/div[2]/div[4]/div') is True:
-                driver.find_element_by_tag_name('body').send_keys(Keys.ENTER)
-                time.sleep(0.5)
+                driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[3]/div[3]/div[3]/div[2]/button').click()
     else:
         driver.close()
         driver.switch_to.window(driver.window_handles[0])
