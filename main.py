@@ -1,6 +1,7 @@
 from tkinter import *
+import tkinter.messagebox as msgbox
 from modules import auto_e
-import threading
+from multiprocessing.pool import ThreadPool
 
 root = Tk()
 root.title("Auto Edunet")
@@ -21,8 +22,15 @@ password_label.grid(column=0, row=1, sticky=N+E+W+S, pady=10)
 def do():
     username = input_username.get()
     password = input_password.get()
-    thread = threading.Thread(target=auto_e.run, args=(username, password))
-    thread.start()
+    pool = ThreadPool(processes=1)
+    pool_result = pool.apply_async(auto_e.run, (username, password))
+    result = BooleanVar()
+    result = pool_result.get()
+    if result:
+        msgbox.showinfo("성공", "영상 재생에 성공했습니다")
+    else:
+        msgbox.showerror("에러", "영상 재생 도중 에러가 발생했습니다.\n다시 시도해 보십시오")
+        
 
 btn1 = Button(root, width=20, height=2, text="Launch", command=do)
 btn1.grid(column=0, row=2, columnspan=2, sticky=N+E+W+S)
