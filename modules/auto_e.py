@@ -49,6 +49,8 @@ def run(username, password):
             if driver.current_url.startswith("https://cls1.edunet.net/cyber/content/play.do"):
                 try:
                     driver.find_element(by=By.XPATH, value='//*[@id="mep_0"]/div/div[2]/div[4]/div').click()
+                    time.sleep(1)
+                    driver.find_element(by=By.XPATH, value='//*[@id="mep_0"]/div/div[2]/div[4]/div').click()
                 except:
                     pass
                 while True:
@@ -62,7 +64,7 @@ def run(username, password):
                                 driver.find_element(by=By.XPATH, value='/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]/button[1]').click()
                                 time.sleep(1)
                                 driver.find_element(by=By.XPATH, value='//*[@id="mep_0"]/div/div[3]/div[3]/div[3]/div[2]/button[1]').click()
-                                time.sleep(0.5)
+                                time.sleep(1)
                                 driver.find_element(by=By.XPATH, value='//*[@id="mep_0"]/div/div[2]/div[4]/div').click()
                             except:
                                 pass
