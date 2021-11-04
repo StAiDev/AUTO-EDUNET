@@ -15,7 +15,7 @@ input_username.grid(column=1, row=0, pady=10, sticky=N+E+W+S)
 username_label.grid(column=0, row=0, pady=10, sticky=N+E+W+S)
 
 password_label = Label(root, text="Password: ")
-input_password = Entry(root, width=30)
+input_password = Entry(root, width=30, show="*")
 input_password.grid(column=1, row=1, sticky=N+E+W+S, pady=10)
 password_label.grid(column=0, row=1, sticky=N+E+W+S, pady=10)
 

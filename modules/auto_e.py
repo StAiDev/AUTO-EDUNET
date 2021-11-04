@@ -33,8 +33,7 @@ def run(username, password):
         if driver.current_url == "https://cls1.edunet.net/cyber/cm/mcom/pmco000b00.do":
             driver.find_element(by=By.XPATH, value='//*[@id="mCSB_2_container"]/ul/li/a').click()
         else:
-            print("id 또는 pw가 맞지 않습니다")
-            driver.quit()
+            return False
         time.sleep(1)
         driver.find_element(by=By.XPATH, value='//*[@id="content-main"]/div[2]/div[2]/div/div[1]/div[4]/a').click()
         time.sleep(1)
