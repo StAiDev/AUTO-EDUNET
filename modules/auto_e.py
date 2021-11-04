@@ -10,23 +10,10 @@ import time
 f = open("login.txt", 'r')
 
 
-root.mainloop()
+f = open("login.txt", 'r')
 
-
-
-
-def check(xpath):
-    try:
-        driver.find_element_by_xpath(xpath)
-    except NoSuchElementException:
-        return False
-    return True
-
-
-def launchWeb(_username, _password):
-
-    username = _username
-    password = _password
+username = f.readline()
+password = f.readline()
 
 def run(username, password):
     def check(xpath):
