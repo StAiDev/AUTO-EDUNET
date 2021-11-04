@@ -72,5 +72,3 @@ def run(username, password):
             driver.close()
             driver.switch_to.window(driver.window_handles[0])
         i += 1
-
-run(username, password)
