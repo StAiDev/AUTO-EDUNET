@@ -38,9 +38,9 @@ driver.find_element(by=By.ID, value="login_id_main").send_keys(username)
 driver.find_element(by=By.ID, value="password_main").send_keys(password)
 driver.find_element(by=By.ID, value="password_main").send_keys(Keys.ENTER)
 time.sleep(2)
-try:
+if driver.current_url == "https://cls1.edunet.net/cyber/cm/mcom/pmco000b00.do":
     driver.find_element_by_xpath('//*[@id="mCSB_2_container"]/ul/li/a').click()
-except:
+else:
     print("id 또는 pw가 맞지 않습니다")
     driver.quit()
 time.sleep(1)
