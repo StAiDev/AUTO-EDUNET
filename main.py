@@ -26,6 +26,10 @@ def do():
     pool_result = pool.apply_async(auto_e.run, (username, password))
     result = BooleanVar()
     result = pool_result.get()
+    if result:
+        msgbox.showinfo("성공", "영상 재생에 성공했습니다")
+    else:
+        msgbox.showerror("에러", "영상 재생 도중 에러가 발생했습니다.\n다시 시도해 보십시오")
         
 
 btn1 = Button(root, width=20, height=2, text="Launch", command=do)
