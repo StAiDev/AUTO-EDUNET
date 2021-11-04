@@ -7,6 +7,16 @@ import time
 
 
 def run(username, password):
+    chrome_ver = chromedriver_autoinstaller.get_chrome_version().split('.')[0]
+    options = webdriver.ChromeOptions()
+    options.add_argument("--mute-audio")
+    options.add_argument("disable-gpu")
+    options.add_experimental_option("excludeSwitches", ["enable-logging"])
+    try:
+        driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe', options=options)   
+    except:
+        chromedriver_autoinstaller.install(True)
+        driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe', options=options)
     def check(xpath):
             try:
                 driver.find_element(by=By.XPATH, value=xpath)
@@ -14,15 +24,6 @@ def run(username, password):
                 return False
             return True
     try:
-
-        chrome_ver = chromedriver_autoinstaller.get_chrome_version().split('.')[0]
-        options = webdriver.ChromeOptions()
-        options.add_experimental_option("excludeSwitches", ["enable-logging"])
-        try:
-            driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe', options=options)   
-        except:
-            chromedriver_autoinstaller.install(True)
-            driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe', options=options)
         driver.maximize_window()
         driver.get("https://cls1.edunet.net/")
         time.sleep(1)

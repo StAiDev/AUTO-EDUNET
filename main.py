@@ -22,7 +22,7 @@ password_label.grid(column=0, row=1, sticky=N+E+W+S, pady=10)
 def do():
     username = input_username.get()
     password = input_password.get()
-    pool = ThreadPool(processes=1)
+    pool = ThreadPool(processes=2)
     pool_result = pool.apply_async(auto_e.run, (username, password))
     result = BooleanVar()
     result = pool_result.get()
