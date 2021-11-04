@@ -5,13 +5,9 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 import chromedriver_autoinstaller
 import time
-from tkinter import *
 
-root = Tk()
-root.title("Auto Edunet")
-root.geometry("480x640")
-root.resizable(False, False)
 
+f = open("login.txt", 'r')
 
 
 root.mainloop()
@@ -32,17 +28,25 @@ def launchWeb(_username, _password):
     username = _username
     password = _password
 
+def run(username, password):
+    def check(xpath):
+            try:
+                driver.find_element_by_xpath(xpath)
+            except NoSuchElementException:
+                return False
+            return True
     chrome_ver = chromedriver_autoinstaller.get_chrome_version().split('.')[0]
     options = webdriver.ChromeOptions()
     options.add_experimental_option("excludeSwitches", ["enable-logging"])
-
-
     try:
         driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe', options=options)   
     except:
         chromedriver_autoinstaller.install(True)
         driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe', options=options)
+<<<<<<< HEAD:gui.py
 
+=======
+>>>>>>> 4666cbf7fe9b487e61c8bf7d8234a716e568ccd5:modules/auto_e.py
     driver.maximize_window()
     driver.get("https://cls1.edunet.net/")
     time.sleep(1)
@@ -50,13 +54,13 @@ def launchWeb(_username, _password):
     driver.find_element(by=By.ID, value="password_main").send_keys(password)
     driver.find_element(by=By.ID, value="password_main").send_keys(Keys.ENTER)
     time.sleep(2)
-    try:
+    if driver.current_url == "https://cls1.edunet.net/cyber/cm/mcom/pmco000b00.do":
         driver.find_element_by_xpath('//*[@id="mCSB_2_container"]/ul/li/a').click()
-    except:
+    else:
         print("id 또는 pw가 맞지 않습니다")
         driver.quit()
     time.sleep(1)
-    driver.find_element_by_xpath('//*[@id="content-main"]/div[2]/div[2]/div/div[1]/div[4]/a').click()
+    driver.find_element_by_xpath('//*[@id="content-main"]/div[2]/div[2]/div/div[2]/div[4]/a').click()
     time.sleep(1)
     driver.execute_script("window.scrollTo(0, 700)")
     time.sleep(0.7)
@@ -71,10 +75,19 @@ def launchWeb(_username, _password):
             driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[3]/div[3]/div[3]/div[2]/button').click()
             while True:
                 if check('/html/body/div[4]/div[2]/div/div/div/div/div/div/div'):
-                    driver.find_element_by_xpath('/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]/button[1]').click()
-                    time.sleep(0.6)
-                    driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[3]/div[3]/div[3]/div[2]/button').click()
+                    if driver.find_element_by_xpath('/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]/button[1]').text == "학습을 완료하였습니다. 마지막 영상 입니다.":  
+                        driver.quit()
+                    try:
+                        driver.find_element_by_xpath('/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]/button[1]').click()
+                        time.sleep(1)
+                        driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[3]/div[3]/div[3]/div[2]/button').click()
+                        time.sleep(0.5)
+                        driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[2]/div[4]/div').click()
+                    except:
+                        pass
         else:
             driver.close()
             driver.switch_to.window(driver.window_handles[0])
         i += 1
+
+run(username, password)
