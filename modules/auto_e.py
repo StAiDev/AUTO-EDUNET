@@ -6,11 +6,6 @@ import chromedriver_autoinstaller
 import time
 
 
-f = open("login.txt", 'r')
-
-username = f.readline()
-password = f.readline()
-
 def run(username, password):
     def check(xpath):
             try:
