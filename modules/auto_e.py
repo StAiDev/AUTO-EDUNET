@@ -1,7 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 import chromedriver_autoinstaller
 import time
@@ -15,7 +14,7 @@ password = f.readline()
 def run(username, password):
     def check(xpath):
             try:
-                driver.find_element_by_xpath(xpath)
+                driver.find_element(by=By.XPATH, value=xpath)
             except NoSuchElementException:
                 return False
             return True
@@ -35,37 +34,37 @@ def run(username, password):
     driver.find_element(by=By.ID, value="password_main").send_keys(Keys.ENTER)
     time.sleep(2)
     if driver.current_url == "https://cls1.edunet.net/cyber/cm/mcom/pmco000b00.do":
-        driver.find_element_by_xpath('//*[@id="mCSB_2_container"]/ul/li/a').click()
+        driver.find_element(by=By.XPATH, value='//*[@id="mCSB_2_container"]/ul/li/a').click()
     else:
         print("id 또는 pw가 맞지 않습니다")
         driver.quit()
     time.sleep(1)
-    driver.find_element_by_xpath('//*[@id="content-main"]/div[2]/div[2]/div/div[1]/div[4]/a').click()
+    driver.find_element(by=By.XPATH, value='//*[@id="content-main"]/div[2]/div[2]/div/div[1]/div[4]/a').click()
     time.sleep(1)
     driver.execute_script("window.scrollTo(0, 700)")
     time.sleep(0.7)
     i = 1
     while True:
-        target = driver.find_element_by_xpath(f'//*[@id="content-main"]/div[2]/div[2]/div[2]/ul/li[{i}]/div[1]/div[1]/div/div[3]/div/a/span[2]')
+        target = driver.find_element(by=By.XPATH, value=f'//*[@id="content-main"]/div[2]/div[2]/div[2]/ul/li[{i}]/div[1]/div[1]/div/div[3]/div/a/span[2]')
         target.click()
         time.sleep(0.9)
         driver.switch_to.window(driver.window_handles[1])
         time.sleep(0.3)
         if driver.current_url.startswith("https://cls1.edunet.net/cyber/content/play.do"):
-            driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[3]/div[3]/div[3]/div[2]/button').click()
+            driver.find_element(by=By.XPATH, value='//*[@id="mep_0"]/div/div[3]/div[3]/div[3]/div[2]/button').click()
             while True:
                 if check('/html/body/div[4]/div[2]/div/div/div/div/div/div/div'):
-                    if driver.find_element_by_xpath('/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[3]/div/div').text == "학습을 완료하였습니다. 마지막 영상 입니다.":  
+                    if driver.find_element(by=By.XPATH, value='/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[3]/div/div').text == "학습을 완료하였습니다. 마지막 영상 입니다.":  
                         print("success!")
                         driver.quit()
                         return
                     else:
                         try:
-                            driver.find_element_by_xpath('/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]/button[1]').click()
+                            driver.find_element(by=By.XPATH, value='/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]/button[1]').click()
                             time.sleep(1)
-                            driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[3]/div[3]/div[3]/div[2]/button').click()
+                            driver.find_element(by=By.XPATH, value='//*[@id="mep_0"]/div/div[3]/div[3]/div[3]/div[2]/button').click()
                             time.sleep(0.5)
-                            driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[2]/div[4]/div').click()
+                            driver.find_element(by=By.XPATH, value='//*[@id="mep_0"]/div/div[2]/div[4]/div').click()
                         except:
                             pass
         else:
