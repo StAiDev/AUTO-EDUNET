@@ -6,7 +6,19 @@ from selenium.webdriver.common.by import By
 import chromedriver_autoinstaller
 import time
 
+
+f = open("login.txt", 'r')
+
+username = f.readline()
+password = f.readline()
+
 def run(username, password):
+    def check(xpath):
+            try:
+                driver.find_element_by_xpath(xpath)
+            except NoSuchElementException:
+                return False
+            return True
     chrome_ver = chromedriver_autoinstaller.get_chrome_version().split('.')[0]
     options = webdriver.ChromeOptions()
     options.add_experimental_option("excludeSwitches", ["enable-logging"])
@@ -43,6 +55,8 @@ def run(username, password):
             driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[3]/div[3]/div[3]/div[2]/button').click()
             while True:
                 if check('/html/body/div[4]/div[2]/div/div/div/div/div/div/div'):
+                    if driver.find_element_by_xpath('/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]/button[1]').text == "학습을 완료하였습니다. 마지막 영상 입니다.":  
+                        driver.quit()
                     try:
                         driver.find_element_by_xpath('/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]/button[1]').click()
                         time.sleep(1)
@@ -55,3 +69,5 @@ def run(username, password):
             driver.close()
             driver.switch_to.window(driver.window_handles[0])
         i += 1
+
+run(username, password)
