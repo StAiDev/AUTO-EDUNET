@@ -13,7 +13,20 @@ root.geometry("480x640")
 root.resizable(False, False)
 
 
+
 root.mainloop()
+
+
+
+
+def check(xpath):
+    try:
+        driver.find_element_by_xpath(xpath)
+    except NoSuchElementException:
+        return False
+    return True
+
+
 def launchWeb(_username, _password):
 
     username = _username
@@ -29,15 +42,6 @@ def launchWeb(_username, _password):
     except:
         chromedriver_autoinstaller.install(True)
         driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe', options=options)
-
-
-    def check(xpath):
-        try:
-            driver.find_element_by_xpath(xpath)
-        except NoSuchElementException:
-            return False
-        return True
-
 
     driver.maximize_window()
     driver.get("https://cls1.edunet.net/")
