@@ -8,12 +8,15 @@ root.geometry("480x640")
 root.resizable(False, False)
 root.iconbitmap("resources/edunet.ico")
 
-
+username_label = Label(root, text="ID: ")
 input_username = Entry(root, width=30)
-input_username.pack()
+input_username.grid(column=1, row=0)
+username_label.grid(column=0, row=0)
 
+password_label = Label(root, text="Password: ")
 input_password = Entry(root, width=30)
-input_password.pack()
+input_password.grid(column=1, row=1)
+password_label.grid(column=0, row=1)
 
 def do():
     username = input_username.get()
@@ -22,6 +25,6 @@ def do():
     thread.start()
 
 btn1 = Button(root, width=20, height=2, text="Launch", command=do)
-btn1.pack()
+btn1.grid(column=0, row=2, columnspan=2)
 
 root.mainloop()

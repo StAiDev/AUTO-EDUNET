@@ -3,3 +3,5 @@
 /.vscode
 *.txt
 /modules/__pycache__
+/__pycache__
+/build
