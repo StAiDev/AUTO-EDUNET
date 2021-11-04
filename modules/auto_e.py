@@ -60,14 +60,15 @@ def run(username, password):
                 if check('/html/body/div[4]/div[2]/div/div/div/div/div/div/div'):
                     if driver.find_element_by_xpath('/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]/button[1]').text == "학습을 완료하였습니다. 마지막 영상 입니다.":  
                         driver.quit()
-                    try:
-                        driver.find_element_by_xpath('/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]/button[1]').click()
-                        time.sleep(1)
-                        driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[3]/div[3]/div[3]/div[2]/button').click()
-                        time.sleep(0.5)
-                        driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[2]/div[4]/div').click()
-                    except:
-                        pass
+                    else:
+                        try:
+                            driver.find_element_by_xpath('/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]/button[1]').click()
+                            time.sleep(1)
+                            driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[3]/div[3]/div[3]/div[2]/button').click()
+                            time.sleep(0.5)
+                            driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[2]/div[4]/div').click()
+                        except:
+                            pass
         else:
             driver.close()
             driver.switch_to.window(driver.window_handles[0])
