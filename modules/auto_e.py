@@ -43,10 +43,6 @@ def run(username, password):
     except:
         chromedriver_autoinstaller.install(True)
         driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe', options=options)
-<<<<<<< HEAD:gui.py
-
-=======
->>>>>>> 4666cbf7fe9b487e61c8bf7d8234a716e568ccd5:modules/auto_e.py
     driver.maximize_window()
     driver.get("https://cls1.edunet.net/")
     time.sleep(1)
