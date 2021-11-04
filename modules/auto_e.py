@@ -9,9 +9,6 @@ import time
 
 f = open("login.txt", 'r')
 
-
-f = open("login.txt", 'r')
-
 username = f.readline()
 password = f.readline()
 
