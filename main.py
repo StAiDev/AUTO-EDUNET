@@ -59,9 +59,9 @@ while True:
         driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[3]/div[3]/div[3]/div[2]/button').click()
         while True:
             if check('/html/body/div[4]/div[2]/div/div/div/div/div/div/div'):
-                driver.find_element_by_xpath('/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]/button[1]').click()
-                time.sleep(1)
                 try:
+                    driver.find_element_by_xpath('/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]/button[1]').click()
+                    time.sleep(1)
                     driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[3]/div[3]/div[3]/div[2]/button').click()
                     time.sleep(0.5)
                     driver.find_element_by_xpath('//*[@id="mep_0"]/div/div[2]/div[4]/div').click()
