@@ -5,3 +5,5 @@
 /modules/__pycache__
 /__pycache__
 /build
+/dist
+*.spec
