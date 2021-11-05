@@ -33,6 +33,8 @@ input_num = Entry(root, width=30)
 input_num.grid(column=1, row=2, sticky=N+E+W+S, pady=10)
 num_label.grid(column=0, row=2, sticky=N+E+W+S, pady=10)
 
+values = ["서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주", "기타"]
+
 loca_label = Label(root, text="e학습터 앞 주소 ex)cls1:")
 input_loca = Entry(root, width=30)
 input_loca.grid(column=1, row=3, sticky=N+E+W+S, pady=10)
