@@ -80,7 +80,6 @@ def run(loca, num ,username, password):
                     if check('/html/body/div[4]/div[2]/div/div/div/div/div/div/div'):
                         if driver.find_element(by=By.XPATH, value='/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[3]/div/div').text == "학습을 완료하였습니다. 마지막 영상 입니다.":  
                             print("success!")
-                            driver.quit()
                             os.rmdir("./downloads")
                             return 3
                         else:
