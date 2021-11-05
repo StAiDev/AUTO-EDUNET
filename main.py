@@ -41,7 +41,7 @@ values = ["서울", "부산", "대구", "인천", "광주", "대전", "울산", 
 matches = ["cls1", "cls2", "cls3", "cls4", "cls5", "cls5", "cls2", "cls10", "cls7", "cls3", "cls4", "cls10", "cls11", "cls11", "cls9", "cls8", "cls9", "cls7"]
 
 loca_label = Label(root, text="e학습터 지역")
-input_loca = ttk.Combobox(root, values = values)
+input_loca = ttk.Combobox(root, values = values, state="readonly")
 input_loca.set("서울")
 input_loca.grid(column=1, row=3, sticky=N+E+W+S, pady=10)
 loca_label.grid(column=0, row=3, sticky=N+E+W+S, pady=10)
