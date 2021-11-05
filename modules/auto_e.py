@@ -16,13 +16,17 @@ def run(loca, num ,username, password):
     options.add_argument("--mute-audio")
     options.add_argument("disable-gpu")
     options.add_experimental_option("excludeSwitches", ["enable-logging"])
-    service = Service(f'./{chrome_ver}/chromedriver.exe')
+    try:
+        service = Service(f'./{chrome_ver}/chromedriver.exe')
+    except:
+        service = Service(f'./{chrome_ver}/chromedriver')
     service.creationflags = CREATE_NO_WINDOW
     try:
+        chromedriver_autoinstaller.install(True)
         driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe', options=options)   
     except:
         chromedriver_autoinstaller.install(True)
-        driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe', options=options)
+        driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver', options=options)
     def check(xpath):
             try:
                 driver.find_element(by=By.XPATH, value=xpath)
