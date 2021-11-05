@@ -27,7 +27,7 @@ input_password = Entry(root, width=30, show="*")
 input_password.grid(column=1, row=1, sticky=N+E+W+S, pady=10)
 password_label.grid(column=0, row=1, sticky=N+E+W+S, pady=10)
 
-num_label = Label(root, text="재생 하고 싶은 강좌 1 ~ 4: ")
+num_label = Label(root, text="재생 하고 싶은 강좌 1 ~ 4(1=오늘,2=어제): ")
 input_num = Entry(root, width=30)
 input_num.grid(column=1, row=2, sticky=N+E+W+S, pady=10)
 num_label.grid(column=0, row=2, sticky=N+E+W+S, pady=10)
