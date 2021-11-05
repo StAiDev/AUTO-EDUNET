@@ -57,7 +57,6 @@ def do():
     loca = matches[int(find[0])]
     pool = ThreadPool(processes=2)
     pool_result = pool.apply_async(auto_e.run, (loca, time + 1, username, password))
-    result = BooleanVar()
     result = pool_result.get()
     if result == 1:
         msgbox.showerror("에러", "id나 password가 틀렸습니다")
