@@ -33,17 +33,17 @@ input_num = Entry(root, width=30)
 input_num.grid(column=1, row=2, sticky=N+E+W+S, pady=10)
 num_label.grid(column=0, row=2, sticky=N+E+W+S, pady=10)
 
-num_label = Label(root, text="e학습터 앞 주소 ex)cls1:")
-input_num = Entry(root, width=30)
-input_num.grid(column=1, row=3, sticky=N+E+W+S, pady=10)
-num_label.grid(column=0, row=3, sticky=N+E+W+S, pady=10)
+loca_label = Label(root, text="e학습터 앞 주소 ex)cls1:")
+input_loca = Entry(root, width=30)
+input_loca.grid(column=1, row=3, sticky=N+E+W+S, pady=10)
+loca_label.grid(column=0, row=3, sticky=N+E+W+S, pady=10)
 
 def do():
     username = input_username.get()
     password = input_password.get()
     num = input_num.get()
     pool = ThreadPool(processes=2)
-    pool_result = pool.apply_async(auto_e.run, (num, username, password))
+    pool_result = pool.apply_async(auto_e.run, (loca, num, username, password))
     result = BooleanVar()
     result = pool_result.get()
     if result == 1:
