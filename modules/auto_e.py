@@ -3,15 +3,17 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 import chromedriver_autoinstaller
+from selenium.webdriver.chrome.service import Service
+from win32process import CREATE_NO_WINDOW
 import time
-
-
-def run(username, password):
+def run(num ,username, password):
     chrome_ver = chromedriver_autoinstaller.get_chrome_version().split('.')[0]
     options = webdriver.ChromeOptions()
     options.add_argument("--mute-audio")
     options.add_argument("disable-gpu")
     options.add_experimental_option("excludeSwitches", ["enable-logging"])
+    service = Service(f'./{chrome_ver}/chromedriver.exe')
+    service.creationflags = CREATE_NO_WINDOW
     try:
         driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe', options=options)   
     except:
@@ -34,11 +36,12 @@ def run(username, password):
         if driver.current_url == "https://cls1.edunet.net/cyber/cm/mcom/pmco000b00.do":
             driver.find_element(by=By.XPATH, value='//*[@id="mCSB_2_container"]/ul/li/a').click()
         else:
-            return False
+            driver.quit()
+            return 1
+        time.sleep(2)
+        driver.find_element(by=By.XPATH, value=f'//*[@id="content-main"]/div[2]/div[2]/div/div[{num}]/div[4]/a').click()
         time.sleep(1)
-        driver.find_element(by=By.XPATH, value='//*[@id="content-main"]/div[2]/div[2]/div/div[1]/div[4]/a').click()
-        time.sleep(1)
-        driver.execute_script("window.scrollTo(0, 700)")
+        driver.execute_script("window.scrollTo(0, 400);")
         time.sleep(0.7)
         i = 1
         while True:
@@ -59,7 +62,7 @@ def run(username, password):
                         if driver.find_element(by=By.XPATH, value='/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[3]/div/div').text == "학습을 완료하였습니다. 마지막 영상 입니다.":  
                             print("success!")
                             driver.quit()
-                            return True
+                            return 3
                         else:
                             try:
                                 driver.find_element(by=By.XPATH, value='/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]/button[1]').click()
@@ -74,4 +77,4 @@ def run(username, password):
                 driver.switch_to.window(driver.window_handles[0])
             i += 1
     except:
-        return False
+        return 2
