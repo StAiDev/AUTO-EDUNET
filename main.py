@@ -34,6 +34,7 @@ input_num.grid(column=1, row=2, sticky=N+E+W+S, pady=10)
 num_label.grid(column=0, row=2, sticky=N+E+W+S, pady=10)
 
 values = ["서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주", "기타"]
+matches = ["cls1", "cls2", "cls3", "cls4", "cls5", "cls5", "cls2", "cls10", "cls7", "cls3", "cls4", "cls10", "cls11", "cls11", "cls9", "cls8", "cls9", "cls7"]
 
 loca_label = Label(root, text="e학습터 앞 주소 ex)cls1:")
 input_loca = Entry(root, width=30)
