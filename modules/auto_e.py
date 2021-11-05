@@ -89,13 +89,13 @@ def run(loca, num ,username, password):
                             return 3
                         else:
                             try:
+                                i += 1
                                 t.show_toast(f"{i}번째 수업을 재생합니다", icon_path='./icon/ico.ico', duration=4)
                                 driver.find_element(by=By.XPATH, value='/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]/button[1]').click()
                                 time.sleep(2)
                                 driver.find_element(by=By.XPATH, value='//*[@id="mep_0"]/div/div[3]/div[3]/div[3]/div[2]/button[1]').click()
                                 time.sleep(2)
                                 driver.find_element(by=By.XPATH, value='//*[@id="mep_0"]/div/div[2]/div[4]/div').click()
-                                i += 1
                             except:
                                 pass
             else:
