@@ -89,5 +89,5 @@ def run(loca, num ,username, password):
             i += 1
     except:
         driver.quit()
-        os.remove("./downloads")
+        os.rmdir("./downloads")
         return 2
