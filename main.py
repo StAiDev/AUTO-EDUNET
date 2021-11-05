@@ -81,6 +81,8 @@ def do():
         f = open("./save.txt", 'w')
         f.write(username + "\n" + password)
         f.close()
+    elif os.path.isfile("./save.txt"):
+        os.remove("./save.txt")
     loca = matches[int(find[0])]
     mute = mute_check.get()
     pool = ThreadPool(processes=2)
