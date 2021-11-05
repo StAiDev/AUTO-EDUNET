@@ -14,7 +14,7 @@ except:
 
 root = Tk()
 root.title("Auto Edunet")
-root.geometry("300x360")
+root.geometry("480x360")
 root.resizable(False, False)
 root.iconbitmap("resources/edunet.ico")
 
