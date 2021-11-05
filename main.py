@@ -42,6 +42,7 @@ def do():
     username = input_username.get()
     password = input_password.get()
     num = input_num.get()
+    loca = input_loca.get()
     pool = ThreadPool(processes=2)
     pool_result = pool.apply_async(auto_e.run, (loca, num, username, password))
     result = BooleanVar()
