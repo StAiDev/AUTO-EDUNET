@@ -53,7 +53,7 @@ def do():
     password = input_password.get()
     num = input_num.get()
     find = [i for i in range(len(values)) if input_loca.get() in values[i]]
-    loca = matches[find]
+    loca = matches[int(find[0])]
     pool = ThreadPool(processes=2)
     pool_result = pool.apply_async(auto_e.run, (loca, num, username, password))
     result = BooleanVar()
