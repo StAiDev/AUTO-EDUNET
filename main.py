@@ -17,9 +17,10 @@ except:
 
 root = Tk()
 root.title("Auto Edunet")
-root.geometry("300x360")
+root.geometry("480x360")
 root.resizable(False, False)
 root.iconbitmap("resources/edunet.ico")
+
 
 username_label = Label(root, text="ID: ")
 input_username = Entry(root, width=30)
@@ -30,6 +31,21 @@ password_label = Label(root, text="Password: ")
 input_password = Entry(root, width=30, show="*")
 input_password.grid(column=1, row=1, sticky=N+E+W+S, pady=10)
 password_label.grid(column=0, row=1, sticky=N+E+W+S, pady=10)
+
+if os.path.isfile("./save.txt"):
+    try:
+        f = open("./save.txt", 'r')
+        lines = f.readlines()
+        input_username.insert(0, lines[0].strip())
+        input_password.insert(0, lines[1].strip())
+        f.close()
+    except:
+        pass
+
+save_check = IntVar()
+save_checkbtn = Checkbutton(root, text="암호 저장", variable = save_check)
+save_checkbtn.grid(column=3, row=1, sticky=N+E+W+S, pady=10)
+save_checkbtn.select()
 
 value = ["오늘", "1일전", "2일전", "3일전"]
 
@@ -54,11 +70,17 @@ mute_checkbtn = Checkbutton(root, text="음소거", variable = mute_check)
 mute_checkbtn.grid(column=0, row=4, sticky=N+E+W+S, columnspan=2, pady=10)
 mute_checkbtn.select()
 
+
 def do():
     username = input_username.get()
     password = input_password.get()
     time = [i for i in range(len(value)) if input_time.get() in value[i]][0]
     find = [j for j in range(len(values)) if input_loca.get() in values[j]]
+    save = save_check.get()
+    if save:
+        f = open("./save.txt", 'w')
+        f.write(username + "\n" + password)
+        f.close()
     loca = matches[int(find[0])]
     mute = mute_check.get()
     pool = ThreadPool(processes=2)
