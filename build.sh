@@ -1,1 +1,1 @@
-pyinstaller --noconsole --onefile -n autoE  --icon icon/ico.ico --add-data "./modules;./modules" --add-data "./resources;./resources" --add-data "./downloads;./downloads" -add-data "./icon;./icon" main.py
+pyinstaller --noconsole --onefile -n autoE  --icon icon/ico.ico --add-data "./modules;./modules" --add-data "./resources;./resources" --add-data "./downloads;./downloads" --add-data "./icon;./icon" main.py
