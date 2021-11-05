@@ -15,9 +15,6 @@ try:
 except:
     os.chdir(os.getcwd())
 
-def convert(value):
-    pass
-
 root = Tk()
 root.title("Auto Edunet")
 root.geometry("480x360")

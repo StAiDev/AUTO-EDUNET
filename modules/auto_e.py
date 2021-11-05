@@ -80,6 +80,9 @@ def run(loca, num ,username, password):
                 except:
                     pass
                 while True:
+                    i += 1
+                    t.show_toast(f"{i}번째 수업을 재생합니다", icon_path='./icon/ico.ico', duration=4)
+                    
                     if check('/html/body/div[4]/div[2]/div/div/div/div/div/div/div'):
                         if driver.find_element(by=By.XPATH, value='/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[3]/div/div').text == "학습을 완료하였습니다. 마지막 영상 입니다.":  
                             print("success!")
