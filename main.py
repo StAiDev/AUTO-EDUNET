@@ -17,7 +17,7 @@ except:
 
 root = Tk()
 root.title("Auto Edunet")
-root.geometry("300x240")
+root.geometry("300x360")
 root.resizable(False, False)
 root.iconbitmap("resources/edunet.ico")
 
@@ -49,14 +49,20 @@ input_loca.set("서울")
 input_loca.grid(column=1, row=3, sticky=N+E+W+S, pady=10)
 loca_label.grid(column=0, row=3, sticky=N+E+W+S, pady=10)
 
+mute_check = IntVar()
+mute_checkbtn = Checkbutton(root, text="음소거", variable = mute_check)
+mute_checkbtn.grid(column=0, row=4, sticky=N+E+W+S, columnspan=2, pady=10)
+mute_checkbtn.select()
+
 def do():
     username = input_username.get()
     password = input_password.get()
     time = [i for i in range(len(value)) if input_time.get() in value[i]][0]
     find = [j for j in range(len(values)) if input_loca.get() in values[j]]
     loca = matches[int(find[0])]
+    mute = mute_check.get()
     pool = ThreadPool(processes=2)
-    pool_result = pool.apply_async(auto_e.run, (loca, time + 1, username, password))
+    pool_result = pool.apply_async(auto_e.run, (loca, time + 1, username, password, mute))
     result = pool_result.get()
     if result == 1:
         msgbox.showerror("에러", "id나 password가 틀렸습니다")
@@ -70,6 +76,6 @@ def do():
         
 
 btn1 = Button(root, width=20, height=2, text="Launch", command=do)
-btn1.grid(column=0, row=4, columnspan=2, sticky=N+E+W+S)
+btn1.grid(column=0, row=5, columnspan=2, sticky=N+E+W+S)
 
 root.mainloop()

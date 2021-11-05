@@ -10,15 +10,12 @@ import time
 from win10toast import ToastNotifier
 
 
-def run(loca, num ,username, password):
+def run(loca, num ,username, password, mute):
     t = ToastNotifier()
     chrome_ver = chromedriver_autoinstaller.get_chrome_version().split('.')[0]
     options = webdriver.ChromeOptions()
-    try:
-        os.system("mkdir downloads")
-    except:
-        pass
-    options.add_argument("--mute-audio")
+    if mute:
+        options.add_argument("--mute-audio")
     options.add_argument("disable-gpu")
     options.add_experimental_option("excludeSwitches", ["enable-logging"])
     try:
