@@ -27,7 +27,7 @@ def run(loca, num ,username, password):
             return True
     driver.maximize_window()
     try:
-        driver.get(f"https:{loca}//.edunet.net/")
+        driver.get(f"https://{loca}.edunet.net/")
     except:
         driver.quit()
         return 4
