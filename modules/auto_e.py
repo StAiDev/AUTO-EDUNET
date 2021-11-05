@@ -39,7 +39,7 @@ def run(loca, num ,username, password):
             driver.get(f"https://{loca}.edunet.net/")
         except:
             driver.quit()
-            os.remove("./downloads")
+            os.rmdir("./downloads")
             return 4
         time.sleep(1)
         driver.find_element(by=By.ID, value="login_id_main").send_keys(username)
@@ -50,7 +50,7 @@ def run(loca, num ,username, password):
             driver.find_element(by=By.XPATH, value='//*[@id="mCSB_2_container"]/ul/li/a').click()
         else:
             driver.quit()
-            os.remove("./downloads")
+            os.rmdir("./downloads")
             return 1
         time.sleep(2)
         driver.find_element(by=By.XPATH, value=f'//*[@id="content-main"]/div[2]/div[2]/div/div[{num}]/div[4]/a').click()
@@ -76,7 +76,7 @@ def run(loca, num ,username, password):
                         if driver.find_element(by=By.XPATH, value='/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[3]/div/div').text == "학습을 완료하였습니다. 마지막 영상 입니다.":  
                             print("success!")
                             driver.quit()
-                            os.remove("./downloads")
+                            os.rmdir("./downloads")
                             return 3
                         else:
                             try:
