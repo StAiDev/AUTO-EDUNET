@@ -6,7 +6,9 @@ from multiprocessing.pool import ThreadPool
 import os
 import sys
 import tkinter.ttk as ttk
+from win10toast import ToastNotifier
 
+t = ToastNotifier()
 try:
     os.chdir(sys._MEIPASS)
     print(sys._MEIPASS)
@@ -50,7 +52,8 @@ def do():
     username = input_username.get()
     password = input_password.get()
     num = input_num.get()
-    loca = input_loca.get()
+    find = [i for i in range(len(values)) if input_loca.get() in values[i]]
+    loca = find[0]
     pool = ThreadPool(processes=2)
     pool_result = pool.apply_async(auto_e.run, (loca, num, username, password))
     result = BooleanVar()
