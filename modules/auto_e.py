@@ -10,7 +10,10 @@ import time
 def run(loca, num ,username, password):
     chrome_ver = chromedriver_autoinstaller.get_chrome_version().split('.')[0]
     options = webdriver.ChromeOptions()
-    os.system("mkdir downloads")
+    try:
+        os.system("mkdir downloads")
+    except:
+        pass
     prefs = {'download.default_directory' : './downloads'}
     options.add_experimental_option('prefs', prefs)
     options.add_argument("--mute-audio")
