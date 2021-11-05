@@ -25,56 +25,53 @@ def run(num ,username, password):
             except NoSuchElementException:
                 return False
             return True
-    try:
-        driver.maximize_window()
-        driver.get("https://cls1.edunet.net/")
-        time.sleep(1)
-        driver.find_element(by=By.ID, value="login_id_main").send_keys(username)
-        driver.find_element(by=By.ID, value="password_main").send_keys(password)
-        driver.find_element(by=By.ID, value="password_main").send_keys(Keys.ENTER)
-        time.sleep(2)
-        if driver.current_url == "https://cls1.edunet.net/cyber/cm/mcom/pmco000b00.do":
-            driver.find_element(by=By.XPATH, value='//*[@id="mCSB_2_container"]/ul/li/a').click()
+    driver.maximize_window()
+    driver.get("https://cls1.edunet.net/")
+    time.sleep(1)
+    driver.find_element(by=By.ID, value="login_id_main").send_keys(username)
+    driver.find_element(by=By.ID, value="password_main").send_keys(password)
+    driver.find_element(by=By.ID, value="password_main").send_keys(Keys.ENTER)
+    time.sleep(2)
+    if driver.current_url == "https://cls1.edunet.net/cyber/cm/mcom/pmco000b00.do":
+        driver.find_element(by=By.XPATH, value='//*[@id="mCSB_2_container"]/ul/li/a').click()
+    else:
+        driver.quit()
+        return 1
+    time.sleep(2)
+    driver.find_element(by=By.XPATH, value=f'//*[@id="content-main"]/div[2]/div[2]/div/div[{num}]/div[4]/a').click()
+    time.sleep(1)
+    driver.execute_script("window.scrollTo(0, 400);")
+    time.sleep(0.7)
+    i = 1
+    while True:
+        target = driver.find_element(by=By.XPATH, value=f'//*[@id="content-main"]/div[2]/div[2]/div[2]/ul/li[{i}]/div[1]/div[1]/div/div[{4-(i%2)}]/div/a/span[2]')
+        target.click()
+        time.sleep(0.9)
+        driver.switch_to.window(driver.window_handles[1])
+        time.sleep(0.6)
+        if driver.current_url.startswith("https://cls1.edunet.net/cyber/content/play.do"):
+            try:
+                driver.find_element(by=By.XPATH, value='//*[@id="mep_0"]/div/div[2]/div[4]/div').click()
+                time.sleep(1)
+                driver.find_element(by=By.XPATH, value='//*[@id="mep_0"]/div/div[2]/div[4]/div').click()
+            except:
+                pass
+            while True:
+                if check('/html/body/div[4]/div[2]/div/div/div/div/div/div/div'):
+                    if driver.find_element(by=By.XPATH, value='/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[3]/div/div').text == "학습을 완료하였습니다. 마지막 영상 입니다.":  
+                        print("success!")
+                        driver.quit()
+                        return 3
+                    else:
+                        try:
+                            driver.find_element(by=By.XPATH, value='/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]/button[1]').click()
+                            time.sleep(2)
+                            driver.find_element(by=By.XPATH, value='//*[@id="mep_0"]/div/div[3]/div[3]/div[3]/div[2]/button[1]').click()
+                            time.sleep(2)
+                            driver.find_element(by=By.XPATH, value='//*[@id="mep_0"]/div/div[2]/div[4]/div').click()
+                        except:
+                            pass
         else:
-            driver.quit()
-            return 1
-        time.sleep(2)
-        driver.find_element(by=By.XPATH, value=f'//*[@id="content-main"]/div[2]/div[2]/div/div[{num}]/div[4]/a').click()
-        time.sleep(1)
-        driver.execute_script("window.scrollTo(0, 400);")
-        time.sleep(0.7)
-        i = 1
-        while True:
-            target = driver.find_element(by=By.XPATH, value=f'//*[@id="content-main"]/div[2]/div[2]/div[2]/ul/li[{i}]/div[1]/div[1]/div/div[3]/div/a/span[2]')
-            target.click()
-            time.sleep(0.9)
-            driver.switch_to.window(driver.window_handles[1])
-            time.sleep(0.3)
-            if driver.current_url.startswith("https://cls1.edunet.net/cyber/content/play.do"):
-                try:
-                    driver.find_element(by=By.XPATH, value='//*[@id="mep_0"]/div/div[2]/div[4]/div').click()
-                    time.sleep(1)
-                    driver.find_element(by=By.XPATH, value='//*[@id="mep_0"]/div/div[2]/div[4]/div').click()
-                except:
-                    pass
-                while True:
-                    if check('/html/body/div[4]/div[2]/div/div/div/div/div/div/div'):
-                        if driver.find_element(by=By.XPATH, value='/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[3]/div/div').text == "학습을 완료하였습니다. 마지막 영상 입니다.":  
-                            print("success!")
-                            driver.quit()
-                            return 3
-                        else:
-                            try:
-                                driver.find_element(by=By.XPATH, value='/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]/button[1]').click()
-                                time.sleep(2)
-                                driver.find_element(by=By.XPATH, value='//*[@id="mep_0"]/div/div[3]/div[3]/div[3]/div[2]/button[1]').click()
-                                time.sleep(2)
-                                driver.find_element(by=By.XPATH, value='//*[@id="mep_0"]/div/div[2]/div[4]/div').click()
-                            except:
-                                pass
-            else:
-                driver.close()
-                driver.switch_to.window(driver.window_handles[0])
-            i += 1
-    except:
-        return 2
+            driver.close()
+            driver.switch_to.window(driver.window_handles[0])
+        i += 1
