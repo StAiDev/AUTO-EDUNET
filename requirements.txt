@@ -7,4 +7,3 @@ pypiwin32==223
 selenium==3.141.0
 win10toast==0.9
 tk
-sys
