@@ -68,7 +68,7 @@ def run(loca, num ,username, password):
         while True:
             target = driver.find_element(by=By.XPATH, value=f'//*[@id="content-main"]/div[2]/div[2]/div[2]/ul/li[{i}]')
             target.click()
-            t.show_toast(f"{i}교시 재생을 시작합니다", icon_path='./icon/icon.ico', duration=4)
+            t.show_toast(f"{i}번째 수업을 재생합니다", icon_path='./icon/ico.ico', duration=4)
             time.sleep(0.9)
             driver.switch_to.window(driver.window_handles[1])
             time.sleep(0.6)
