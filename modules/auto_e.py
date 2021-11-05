@@ -6,7 +6,7 @@ import chromedriver_autoinstaller
 from selenium.webdriver.chrome.service import Service
 from win32process import CREATE_NO_WINDOW
 import time
-def run(num ,username, password):
+def run(loca, num ,username, password):
     chrome_ver = chromedriver_autoinstaller.get_chrome_version().split('.')[0]
     options = webdriver.ChromeOptions()
     options.add_argument("--mute-audio")
@@ -26,13 +26,17 @@ def run(num ,username, password):
                 return False
             return True
     driver.maximize_window()
-    driver.get("https://cls1.edunet.net/")
+    try:
+        driver.get(f"https:{loca}//.edunet.net/")
+    except:
+        driver.quit()
+        return 4
     time.sleep(1)
     driver.find_element(by=By.ID, value="login_id_main").send_keys(username)
     driver.find_element(by=By.ID, value="password_main").send_keys(password)
     driver.find_element(by=By.ID, value="password_main").send_keys(Keys.ENTER)
     time.sleep(2)
-    if driver.current_url == "https://cls1.edunet.net/cyber/cm/mcom/pmco000b00.do":
+    if driver.current_url == f"https://{loca}.edunet.net/cyber/cm/mcom/pmco000b00.do":
         driver.find_element(by=By.XPATH, value='//*[@id="mCSB_2_container"]/ul/li/a').click()
     else:
         driver.quit()
