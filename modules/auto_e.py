@@ -18,8 +18,6 @@ def run(loca, num ,username, password):
         os.system("mkdir downloads")
     except:
         pass
-    prefs = {'download.default_directory' : './downloads'}
-    options.add_experimental_option('prefs', prefs)
     options.add_argument("--mute-audio")
     options.add_argument("disable-gpu")
     options.add_experimental_option("excludeSwitches", ["enable-logging"])
@@ -46,7 +44,6 @@ def run(loca, num ,username, password):
             driver.get(f"https://{loca}.edunet.net/")
         except:
             driver.quit()
-            os.rmdir("./downloads")
             return 4
         time.sleep(1)
         driver.find_element(by=By.ID, value="login_id_main").send_keys(username)
@@ -57,7 +54,6 @@ def run(loca, num ,username, password):
             driver.find_element(by=By.XPATH, value='//*[@id="mCSB_2_container"]/ul/li/a').click()
         else:
             driver.quit()
-            os.rmdir("./downloads")
             return 1
         time.sleep(2)
         driver.find_element(by=By.XPATH, value=f'//*[@id="content-main"]/div[2]/div[2]/div/div[{num}]/div[4]/a').click()
@@ -104,5 +100,4 @@ def run(loca, num ,username, password):
             i += 1
     except:
         driver.quit()
-        os.rmdir("./downloads")
         return 2
