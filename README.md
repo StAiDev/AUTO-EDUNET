@@ -14,8 +14,8 @@
   4. 네 번째 칸에 자신의 지역을 선택합니다.<br>
   5. Launch 버튼을 누릅니다 가만히 있으면 됩니다(딜레이가 생길수도 있지만 2 - 3 초뒤에 다시 됩니다).
 * <h3> 자신이 직접 빌드하는 방법</h3>
-  1. 터미널을 열고 git clone https://github.com/StAiDev/AUTO-EDUNET.git 을 합니다.
-  2. 그 다음 윈도우면 build, 리눅스이면 ./build.sh 또는 sh build.sh를 합니다.
-  3. dist 폴더를 확인하면 exe 파일이 생깁니다
+  1. 터미널을 열고 git clone https://github.com/StAiDev/AUTO-EDUNET.git 을 합니다.<br>
+  2. 그 다음 윈도우면 build, 리눅스이면 ./build.sh 또는 sh build.sh를 합니다.<br>
+  3. 빌드된 exe 파일은 dist 폴더에 있습니다
 ## 주의 사항
   * 이 프로그램을 사용한 책임은 모두 사용자에게 있으며, 만약 e학습터 계정에 문제가 생겼거나 불이익을 당했을 경우에는 개발자가 책임지지 않습니다.
