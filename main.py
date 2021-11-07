@@ -11,9 +11,10 @@ import argparse
 
 parser = argparse.ArgumentParser()
 
-# 입력받을 인자값 등록
-parser.add_argument('-p', '--processer', required=False, default=2, help='사용할 프로세서의 수')
+parser.add_argument('-p', '--processer', required=False, default="2", metavar='', help='사용할 프로세서의 수')
+parser.add_argument('-l', '--login', required=False, type=str, default=["", ""], nargs="+", metavar='', help='아이디')
 args = parser.parse_args()
+
 
 t = ToastNotifier()
 try:
@@ -48,6 +49,10 @@ if os.path.isfile("./save.txt"):
         f.close()
     except:
         pass
+
+elif args.login:
+    input_username.insert(0, args.login[0])
+    input_password.insert(0, args.login[1])
 
 save_check = IntVar()
 save_checkbtn = Checkbutton(root, text="암호 저장", variable = save_check)
