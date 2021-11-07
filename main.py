@@ -7,6 +7,13 @@ import os
 import sys
 import tkinter.ttk as ttk
 from win10toast import ToastNotifier
+import argparse
+
+parser = argparse.ArgumentParser()
+
+# 입력받을 인자값 등록
+parser.add_argument('-p', '--processer', required=False, default=2, help='사용할 프로세서의 수')
+args = parser.parse_args()
 
 t = ToastNotifier()
 try:
@@ -70,6 +77,7 @@ mute_checkbtn = Checkbutton(root, text="음소거", variable = mute_check)
 mute_checkbtn.grid(column=0, row=4, sticky=N+E+W+S, columnspan=2, pady=10)
 mute_checkbtn.select()
 
+processes = int(args.processer)
 
 def do():
     username = input_username.get()
@@ -85,9 +93,10 @@ def do():
         os.remove("./save.txt")
     loca = matches[int(find[0])]
     mute = mute_check.get()
-    pool = ThreadPool(processes=2)
+    pool = ThreadPool(processes=processes)
     pool_result = pool.apply_async(auto_e.run, (loca, time + 1, username, password, mute))
     result = pool_result.get()
+    print(processes)
     if result == 1:
         msgbox.showerror("에러", "id나 password가 틀렸습니다")
     if result == 3:
