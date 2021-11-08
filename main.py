@@ -97,7 +97,7 @@ def do():
     password = input_password.get()
     time = [i for i in range(len(value)) if input_time.get() in value[i]][0]
     find = [j for j in range(len(values)) if input_loca.get() in values[j]]
-    clssfind = [k for k in range(len(value1)) if input_clss.get() in values[k]][0]
+    clssfind = [k for k in range(len(value1)) if input_clss.get() in value1[k]][0]
     save = save_check.get()
     if save:
         f = open("./save.txt", 'w')
