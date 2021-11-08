@@ -48,7 +48,8 @@ def run(clss, loca, num ,username, password, mute):
         driver.find_element(by=By.ID, value="password_main").send_keys(Keys.ENTER)
         time.sleep(2)
         if driver.current_url == f"https://{loca}.edunet.net/cyber/cm/mcom/pmco000b00.do":
-            driver.find_element(by=By.XPATH, value=f'//*[@id="mCSB_2_container"]/ul[{clss}]/li/a').click()
+            clss_elem = driver.find_elements(by=By.XPATH, value='//*[@id="mCSB_2_container"]')
+            driver.find_element(by=By.XPATH, value=clss_elem[clss]).click()
         else:
             driver.quit()
             return 1
