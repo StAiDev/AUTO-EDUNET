@@ -82,6 +82,14 @@ mute_checkbtn = Checkbutton(root, text="음소거", variable = mute_check)
 mute_checkbtn.grid(column=0, row=4, sticky=N+E+W+S, columnspan=2, pady=10)
 mute_checkbtn.select()
 
+value1 = ["1번째 클래스", "2번째 클래스", "3번째 클래스"]
+
+clss_label = Label(root, text="클래스")
+input_clss = ttk.Combobox(root, values = value1, state="readonly")
+input_clss.set("1번째 클래스")
+input_clss.grid(column=1, row=5, sticky=N+E+W+S, pady=10)
+clss_label.grid(column=0, row=5, sticky=N+E+W+S, pady=10)
+
 processes = int(args.processer)
 
 def do():
@@ -89,6 +97,7 @@ def do():
     password = input_password.get()
     time = [i for i in range(len(value)) if input_time.get() in value[i]][0]
     find = [j for j in range(len(values)) if input_loca.get() in values[j]]
+    clssfind = [k for k in range(len(value1)) if input_clss.get() in values[k]][0]
     save = save_check.get()
     if save:
         f = open("./save.txt", 'w')
@@ -98,8 +107,10 @@ def do():
         os.remove("./save.txt")
     loca = matches[int(find[0])]
     mute = mute_check.get()
+    clss = int(clssfind) + 1
+
     pool = ThreadPool(processes=processes)
-    pool_result = pool.apply_async(auto_e.run, (loca, time + 1, username, password, mute))
+    pool_result = pool.apply_async(auto_e.run, (clss, loca, time + 1, username, password, mute))
     result = pool_result.get()
     print(processes)
     if result == 1:
@@ -114,6 +125,6 @@ def do():
         
 
 btn1 = Button(root, width=20, height=2, text="Launch", command=do)
-btn1.grid(column=0, row=5, columnspan=2, sticky=N+E+W+S)
+btn1.grid(column=0, row=6, columnspan=2, sticky=N+E+W+S)
 
 root.mainloop()

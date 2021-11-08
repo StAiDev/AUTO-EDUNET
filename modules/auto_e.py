@@ -10,7 +10,7 @@ import time
 from win10toast import ToastNotifier
 
 
-def run(loca, num ,username, password, mute):
+def run(clss, loca, num ,username, password, mute):
     t = ToastNotifier()
     chrome_ver = chromedriver_autoinstaller.get_chrome_version().split('.')[0]
     options = webdriver.ChromeOptions()
@@ -48,7 +48,7 @@ def run(loca, num ,username, password, mute):
         driver.find_element(by=By.ID, value="password_main").send_keys(Keys.ENTER)
         time.sleep(2)
         if driver.current_url == f"https://{loca}.edunet.net/cyber/cm/mcom/pmco000b00.do":
-            driver.find_element(by=By.XPATH, value='//*[@id="mCSB_2_container"]/ul/li/a').click()
+            driver.find_element(by=By.XPATH, value=f'//*[@id="mCSB_2_container"]/ul[{clss}]/li/a').click()
         else:
             driver.quit()
             return 1
