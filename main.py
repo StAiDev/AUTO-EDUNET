@@ -97,7 +97,7 @@ def do():
     password = input_password.get()
     time = [i for i in range(len(value)) if input_time.get() in value[i]][0]
     find = [j for j in range(len(values)) if input_loca.get() in values[j]]
-    clssfind = [k for k in range(len(value1)) if input_clss.get() in value1[k]][0]
+    clss = [k for k in range(len(value1)) if input_clss.get() in value1[k]][0]
     save = save_check.get()
     if save:
         f = open("./save.txt", 'w')
@@ -107,10 +107,9 @@ def do():
         os.remove("./save.txt")
     loca = matches[int(find[0])]
     mute = mute_check.get()
-    clss = int(clssfind) + 1
 
     pool = ThreadPool(processes=processes)
-    pool_result = pool.apply_async(auto_e.run, (clss, loca, time + 1, username, password, mute))
+    pool_result = pool.apply_async(auto_e.run, (clss + 1, loca, time + 1, username, password, mute))
     result = pool_result.get()
     print(processes)
     if result == 1:
