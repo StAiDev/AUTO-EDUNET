@@ -40,9 +40,9 @@ input_password = Entry(root, width=30, show="*")
 input_password.grid(column=1, row=1, sticky=N+E+W+S, pady=10)
 password_label.grid(column=0, row=1, sticky=N+E+W+S, pady=10)
 
-if os.path.isfile("./save.txt"):
+if os.path.isfile("C:\autoE\save.txt"):
     try:
-        f = open("./save.txt", 'r')
+        f = open("C:\autoE\save.txt", 'r')
         lines = f.readlines()
         input_username.insert(0, lines[0].strip())
         input_password.insert(0, lines[1].strip())
@@ -57,7 +57,8 @@ elif args.login:
 save_check = IntVar()
 save_checkbtn = Checkbutton(root, text="암호 저장", variable = save_check)
 save_checkbtn.grid(column=3, row=1, sticky=N+E+W+S, pady=10)
-save_checkbtn.select()
+save_checkbtn.deselect()
+
 
 value = ["오늘", "1일전", "2일전", "3일전"]
 
@@ -80,13 +81,13 @@ loca_label.grid(column=0, row=3, sticky=N+E+W+S, pady=10)
 mute_check = IntVar()
 mute_checkbtn = Checkbutton(root, text="음소거", variable = mute_check)
 mute_checkbtn.grid(column=0, row=4, sticky=N+E+W+S, columnspan=2, pady=10)
-mute_checkbtn.select()
+mute_checkbtn.deselect()
 
-value1 = ["1번째 클래스", "2번째 클래스", "3번째 클래스"]
+value1 = ["1번째 학급", "2번째 학급", "3번째 학급"]
 
-clss_label = Label(root, text="클래스")
+clss_label = Label(root, text="학급")
 input_clss = ttk.Combobox(root, values = value1, state="readonly")
-input_clss.set("1번째 클래스")
+input_clss.set("1번째 학급")
 input_clss.grid(column=1, row=5, sticky=N+E+W+S, pady=10)
 clss_label.grid(column=0, row=5, sticky=N+E+W+S, pady=10)
 
@@ -100,11 +101,11 @@ def do():
     clss = [k for k in range(len(value1)) if input_clss.get() in value1[k]][0]
     save = save_check.get()
     if save:
-        f = open("./save.txt", 'w')
+        f = open("C:\autoE\save.txt", 'w')
         f.write(username + "\n" + password)
         f.close()
-    elif os.path.isfile("./save.txt"):
-        os.remove("./save.txt")
+    elif os.path.isfile("C:\autoE\save.txt"):
+        os.remove("C:\autoE\save.txt")
     loca = matches[int(find[0])]
     mute = mute_check.get()
 
