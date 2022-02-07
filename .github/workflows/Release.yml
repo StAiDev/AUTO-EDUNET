@@ -1,26 +1,45 @@
-name: "release"
-
 on:
   push:
-    branches:
-      - "master"
+    tags:
+      - v*
 
 jobs:
-  pre-release:
-    name: "Pre Release"
-    runs-on: "ubuntu-latest"
+  build:
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [macOS-latest, windows-latest, ubuntu-latest]
 
     steps:
-      # ...
-      - name: "Build"
+      - name: Context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - name: Use Python 3.x
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+      - name: pip install
         run: |
-          ./build.sh
-
-      - uses: "marvinpinto/action-automatic-releases@latest"
+          pip install -r requirements
+      - name: Build
+        run: |
+          pyinstaller --noconsole --onefile -n autoE  --icon icon/ico.ico --add-data "./modules;./modules" --add-data "./resources;./resources" --add-data "./downloads;./downloads" --add-data "./icon;./icon" main.py
+      - name: Release
+        uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
           prerelease: false
           title: "build"
           files: |
-            *.exe
+            "dist/autoE*"
+            
+            
+          
