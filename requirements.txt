@@ -1,5 +1,6 @@
-chromedriver-autoinstaller==0.2.2
-pyinstaller==4.4
-selenium==3.141.0
-win10toast==0.9
+chromedriver-autoinstaller
+pyinstaller
+selenium
+win10toast
 tk
+multiprocessing
