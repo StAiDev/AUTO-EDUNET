@@ -6,7 +6,6 @@ from multiprocessing.pool import ThreadPool
 import os
 import sys
 import tkinter.ttk as ttk
-from win10toast import ToastNotifier
 import argparse
 
 parser = argparse.ArgumentParser()
@@ -16,7 +15,6 @@ parser.add_argument('-l', '--login', required=False, type=str, default=["", ""],
 args = parser.parse_args()
 
 
-t = ToastNotifier()
 try:
     os.chdir(sys._MEIPASS)
     print(sys._MEIPASS)
