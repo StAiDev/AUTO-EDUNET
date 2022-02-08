@@ -41,7 +41,7 @@ jobs:
           fi
         shell: bash
       - name: Release
-      - uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2
         with:
           path: dist/
             
