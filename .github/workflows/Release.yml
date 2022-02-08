@@ -23,12 +23,15 @@ jobs:
         with:
           python-version: '3.7.5' # Version range or exact version of a Python version to use, using SemVer's version range syntax
           architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
-      - name: pip install
-        run: |
-          pip install pip3
-          python -m pip3 install --upgrade setuptools
-          python -m pip3 install --upgrade pip
-          python -m pip3 install -r requirements.txt
+      - uses: BSFishy/pip-action@v1
+        with:
+          packages: |
+            chromedriver-autoinstaller
+            pyinstaller
+            selenium
+            win10toast
+            tk
+            multiprocessing
       - name: Build
         run: |
           pyinstaller --noconsole --onefile -n autoE  --icon icon/ico.ico --add-data "./modules;./modules" --add-data "./resources;./resources" --add-data "./downloads;./downloads" --add-data "./icon;./icon" main.py
