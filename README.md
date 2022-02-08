@@ -2,7 +2,7 @@
 
 * <h3>이 프로그램은 이학습터에 있는 동영상을 자동으로 재생해 줍니다.</h3>
 * <h3>다운로드 방법</h3>
-  1. https://github.com/StAiDev/AUTO-EDUNET/release 에 들어가 줍니다. <br>
+  1. https://github.com/StAiDev/AUTO-EDUNET/releases 에 들어가 줍니다. <br>
   2. 원하는 버전을 선택합니다. (버전 넘버 뒤에 a, b 등 알파벳이 붙지 않은 버전을 추천합니다:개발 버전이기 때문입니다).<br>
   3. 원하는 버전을 클릭해, artifac.zip 파일을 다운받은후 자신의 os 에 맞는 파일을 실행합니다(.exe->window, .app-> mac, 확장자없음->linux)<br>
   4. 다운로드 받은 파일을 더블클릭하여 실행해 줍니다.<br>
