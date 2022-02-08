@@ -3,3 +3,4 @@ pyinstaller
 selenium
 win10toast
 tk
+multiprocessing
