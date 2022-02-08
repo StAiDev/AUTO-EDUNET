@@ -1,6 +1,5 @@
 chromedriver-autoinstaller
 pyinstaller
 selenium
-pypiwin32
-win10toast
+pywin32
 tk
