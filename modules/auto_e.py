@@ -7,7 +7,6 @@ from selenium.webdriver.chrome.service import Service
 from win32process import CREATE_NO_WINDOW
 import os
 import time
-from win10toast import ToastNotifier
 
 
 def run(clss, loca, num ,username, password, mute):
@@ -62,7 +61,6 @@ def run(clss, loca, num ,username, password, mute):
     while True:
         target = driver.find_element(by=By.XPATH, value=f'//*[@id="content-main"]/div[2]/div[2]/div[2]/ul/li[{i}]')
         target.click()
-        t.show_toast(f"{i}번째 수업을 재생합니다", icon_path='./icon/ico.ico', duration=4)
         time.sleep(0.9)
         driver.switch_to.window(driver.window_handles[1])
         time.sleep(0.6)
@@ -83,7 +81,6 @@ def run(clss, loca, num ,username, password, mute):
                     else:
                         try:
                             i += 1
-                            t.show_toast(f"{i}번째 수업을 재생합니다", icon_path='./icon/ico.ico', duration=4)
                             driver.find_element(by=By.XPATH, value='/html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[4]/button[1]').click()
                             time.sleep(2)
                             driver.find_element(by=By.XPATH, value='//*[@id="mep_0"]/div/div[3]/div[3]/div[3]/div[2]/button[1]').click()
