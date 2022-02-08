@@ -1,5 +1,4 @@
 chromedriver-autoinstaller
 pyinstaller
 selenium
-pywin32
 tk
