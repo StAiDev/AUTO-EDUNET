@@ -41,13 +41,12 @@ jobs:
           fi
         shell: bash
       - name: Release
-        uses: "marvinpinto/action-automatic-releases@latest"
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          prerelease: false
-          files: |
-            "dist/autoE.*"
+          files: "dist/autoE*"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}"
             
             
           
