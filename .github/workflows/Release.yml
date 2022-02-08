@@ -48,7 +48,7 @@ jobs:
           prerelease: false
           title: "build"
           files: |
-            "dist/autoE*"
+            "dist/autoE.*"
             
             
           
